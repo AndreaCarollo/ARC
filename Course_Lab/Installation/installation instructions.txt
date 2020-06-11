@@ -1,0 +1,23 @@
+sudo apt install terminator python3-numpy python3-scipy python3-matplotlib spyder3 curl
+
+sudo sh -c "echo 'deb [arch=amd64] http://robotpkg.openrobots.org/packages/debian/pub $(lsb_release -sc) robotpkg' >> /etc/apt/sources.list.d/robotpkg.list"
+
+sudo sh -c "echo 'deb [arch=amd64] http://robotpkg.openrobots.org/wip/packages/debian/pub $(lsb_release -sc) robotpkg' >> /etc/apt/sources.list.d/robotpkg.list"
+
+curl http://robotpkg.openrobots.org/packages/debian/robotpkg.key | sudo apt-key add -
+sudo apt-get update
+
+sudo apt install robotpkg-py36-pinocchio robotpkg-py36-example-robot-data robotpkg-urdfdom robotpkg-py36-qt4-gepetto-viewer-corba robotpkg-osg-dae robotpkg-py36-quadprog robotpkg-py36-tsid
+
+#configure environment variables (add to .bashrc)
+#1) step: gedit  ~/.bashrc
+#2) step: copy the following lines:
+
+export PATH=/opt/openrobots/bin:$PATH
+export PKG_CONFIG_PATH=/opt/openrobots/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=/opt/openrobots/lib:$LD_LIBRARY_PATH
+export PYTHONPATH=/opt/openrobots/lib/python3.6/site-packages:$PYTHONPATH
+export PYTHONPATH=/home/andrea/Documents/ARC:$PYTHONPATH
+
+
+where <folder_containing_arc> is the folder in which you will write the python code for the class
